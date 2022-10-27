@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6ff1e80dcd.js" crossorigin="anonymous"></script>
+    <!-- Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>title</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div id="root"></div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    counter: 0,
+                    stepSize: 1,
+                    max: Infinity,
+                }
+            }
+            handleDecrement = () => {
+                this.setState({
+                    counter: this.state.counter - this.state.stepSize
+                })
+            }
+            handleIncrement = () => {
+                if (this.state.counter >= this.state.max) {
+                    counter: this.state.max
+                } else {
+                    this.setState({
+                        counter: this.state.counter + this.state.stepSize
+                    })
+                }
+
+            }
+            handleReset = () => {
+                this.setState({
+                    counter: 0,
+                    stepSize: 1
+
+                })
+            }
+            handleStep = (event) => {
+                let step = event.target.innerText
+                this.setState({
+                    stepSize: +step
+                })
+            }
+            handleMax = () => {
+                let max = event.target.innerText
+                this.setState({
+                    max: +max
+                })
+            }
+            render() {
+                return (
+                    < div className='parent' >
+                        <div>{this.state.counter}</div>
+                        <div className='flex'>
+                            <div className="step">
+                                <p>Steps</p>
+                                <div className="flex">
+                                    <div onClick={this.handleStep}>5</div>
+                                    <div onClick={this.handleStep}>10</div>
+                                    <div onClick={this.handleStep}>15</div>
+                                </div>
+                            </div>
+                            <div className='max'>
+                                <p>Max</p>
+                                <div className="flex">
+                                    <div onClick={this.handleMax}>15</div>
+                                    <div onClick={this.handleMax}>100</div>
+                                    <div onClick={this.handleMax}>200</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <button onClick={this.handleIncrement}>Increment</button>
+                            <button onClick={this.handleDecrement}>Decrement</button>
+                            <button onClick={this.handleReset}>Reset</button>
+                        </div>
+                    </div >
+                )
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<React.StrictMode>
+            <App />
+        </React.StrictMode>)
+    </script>
+</body>
+
+</html>
