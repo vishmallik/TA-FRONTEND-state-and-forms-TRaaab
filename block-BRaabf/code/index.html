@@ -46,11 +46,14 @@
                 })
             }
             handleIncrement = () => {
-                if (this.state.counter >= this.state.max) {
-                    counter: this.state.max
+                let { counter, stepSize, max } = this.state;
+                if (counter + stepSize > max) {
+                    this.setState({
+                        counter
+                    })
                 } else {
                     this.setState({
-                        counter: this.state.counter + this.state.stepSize
+                        counter: counter + stepSize
                     })
                 }
 
@@ -82,17 +85,17 @@
                             <div className="step">
                                 <p>Steps</p>
                                 <div className="flex">
-                                    <div onClick={this.handleStep}>5</div>
-                                    <div onClick={this.handleStep}>10</div>
-                                    <div onClick={this.handleStep}>15</div>
+                                    <div className={this.state.stepSize == 5 ? "active" : ""} onClick={this.handleStep}>5</div>
+                                    <div className={this.state.stepSize == 10 ? "active" : ""} onClick={this.handleStep}>10</div>
+                                    <div className={this.state.stepSize == 15 ? "active" : ""} onClick={this.handleStep}>15</div>
                                 </div>
                             </div>
                             <div className='max'>
                                 <p>Max</p>
                                 <div className="flex">
-                                    <div onClick={this.handleMax}>15</div>
-                                    <div onClick={this.handleMax}>100</div>
-                                    <div onClick={this.handleMax}>200</div>
+                                    <div className={this.state.max == 15 ? "active" : ""} onClick={this.handleMax}>15</div>
+                                    <div className={this.state.max == 100 ? "active" : ""} onClick={this.handleMax}>100</div>
+                                    <div className={this.state.max == 200 ? "active" : ""} onClick={this.handleMax}>200</div>
                                 </div>
                             </div>
 
