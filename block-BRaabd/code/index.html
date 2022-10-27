@@ -50,7 +50,7 @@
                 return (
                     <div className="parent">
                         {labels.map(label =>
-                            <button
+                            <button key={label}
                                 className={this.state.active == label ? "active" : ""}
                                 onClick={this.clickHandler}>
                                 {label}
@@ -62,7 +62,8 @@
             }
         }
 
-        ReactDOM.render(<App />, document.getElementById('root'))
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />)
     </script>
 </body>
 
