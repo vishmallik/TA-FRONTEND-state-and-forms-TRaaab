@@ -1,0 +1,19 @@
+button {
+  margin: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.parent {
+  text-align: center;
+}
+img {
+  width: 100%;
+}
+.img-container {
+  width: 30%;
+  margin: 0 auto;
+  padding: 5rem;
+}
+.active {
+  background-color: red;
+  color: white;
+}

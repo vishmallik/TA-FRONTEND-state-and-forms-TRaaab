@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6ff1e80dcd.js" crossorigin="anonymous"></script>
+    <!-- Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>title</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div id="root"></div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    active: ""
+                }
+            }
+            clickHandler = (event) => {
+                this.setState({
+                    active: event.target.innerText.toLowerCase()
+                })
+
+            }
+
+            render() {
+                let labels = ["basketball", "cricket", "laptop", "phone", "pubg", "tiger"]
+                return (
+                    <div className="parent">
+                        {labels.map(label =>
+                            <button key={label}
+                                className={this.state.active == label ? "active" : ""}
+                                onClick={this.clickHandler}>
+                                {label}
+                            </button>)}
+                        <div className='img-container'>
+                            <img src={`../assets/${this.state.active}.jpg`} alt="" /></div>
+                    </div>
+                )
+            }
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />)
+    </script>
+</body>
+
+</html>
