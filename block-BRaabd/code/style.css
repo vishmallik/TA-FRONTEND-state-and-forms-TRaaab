@@ -13,3 +13,7 @@ img {
   margin: 0 auto;
   padding: 5rem;
 }
+.active {
+  background-color: red;
+  color: white;
+}

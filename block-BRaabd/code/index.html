@@ -35,27 +35,28 @@
             constructor(props) {
                 super(props)
                 this.state = {
-                    src: ""
+                    active: ""
                 }
             }
             clickHandler = (event) => {
                 this.setState({
-                    src: "../assets/" + event.target.innerText.toLowerCase() + ".jpg"
+                    active: event.target.innerText.toLowerCase()
                 })
 
             }
 
             render() {
+                let labels = ["basketball", "cricket", "laptop", "phone", "pubg", "tiger"]
                 return (
                     <div className="parent">
-                        <button onClick={this.clickHandler}>BasketBall</button>
-                        <button onClick={this.clickHandler}>Cricket</button>
-                        <button onClick={this.clickHandler}>Laptop</button>
-                        <button onClick={this.clickHandler}>Phone</button>
-                        <button onClick={this.clickHandler}>Pubg</button>
-                        <button onClick={this.clickHandler}>Tiger</button>
+                        {labels.map(label =>
+                            <button
+                                className={this.state.active == label ? "active" : ""}
+                                onClick={this.clickHandler}>
+                                {label}
+                            </button>)}
                         <div className='img-container'>
-                            <img src={this.state.src} alt="" /></div>
+                            <img src={`../assets/${this.state.active}.jpg`} alt="" /></div>
                     </div>
                 )
             }
