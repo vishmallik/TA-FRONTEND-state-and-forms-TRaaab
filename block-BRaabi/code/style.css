@@ -12,6 +12,7 @@ li {
   background-color: rgb(180, 245, 245);
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
 }
 li > div:first-child {
   padding: 1.5rem 3rem;
@@ -27,7 +28,6 @@ li > div:nth-child(2) {
   background-color: rgb(221, 255, 226);
   display: flex;
   justify-content: space-between;
-  display: none;
 }
 .visible {
   display: block !important;
