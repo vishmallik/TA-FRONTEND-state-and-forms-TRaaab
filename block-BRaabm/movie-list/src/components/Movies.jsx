@@ -1,5 +1,4 @@
 import moviesList from "../data.json";
-// import Movie from "./Movie";
 import Modal from "./Modal";
 import React from "react";
 
@@ -20,7 +19,7 @@ class Movies extends React.Component {
       <ul className="flex wrap container movies">
         {moviesList.map((movie, index) => {
           return (
-            <li>
+            <li key={movie.imdbID}>
               <div className="img-container">
                 <img src={movie.Poster} alt={movie.Title} />
                 <div className="flex details">

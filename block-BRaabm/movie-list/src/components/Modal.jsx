@@ -72,8 +72,8 @@ function Modal(props) {
         </div>
         <h3 className="pictures">Pictures:</h3>
         <div className="flex wrap">
-          {movie.Images.map((img) => (
-            <img src={img} alt=""></img>
+          {movie.Images.map((img, i) => (
+            <img key={i} src={img} alt=""></img>
           ))}
         </div>
       </div>
