@@ -6,10 +6,10 @@ function SideBar(props) {
           <a href=".#">Home</a>
         </li>
         <li>
-          <a href=".#">Contact</a>
+          <a href="https://github.com/vishmallik">Contact</a>
         </li>
         <li>
-          <a href=".#">About</a>
+          <a href="https://github.com/vishmallik">About</a>
         </li>
       </ul>
       <div>
