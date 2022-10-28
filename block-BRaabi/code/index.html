@@ -57,38 +57,30 @@
             constructor(props) {
                 super(props)
                 this.state = {
-                    accordion: "close"
+                    activeIndex: null
                 }
             }
             clickHandler = (i) => {
-                if (this.state.accordion === "close") {
-                    this.setState({
-                        accordion: "open"
-                    })
-                    document.getElementById(i).classList.add("visible")
-                }
-                if (this.state.accordion === "open") {
-                    this.setState({
-                        accordion: "close"
-                    })
-                    document.getElementById(i).classList.remove("visible")
-
-                }
-
+                this.setState({
+                    activeIndex: this.state.activeIndex === i ? null : i
+                })
             }
             render() {
+                let { activeIndex } = this.state;
                 return (
                     <ul className="parent">
                         {questions.map((question, i) => {
-                            return (<>
+                            return (
                                 <li onClick={() => this.clickHandler(i)} key={i}>
                                     <div>
                                         {question.Q}
-                                        <i className="fa-solid fa-caret-down"></i>
+                                        {activeIndex === i ? <i className="fa-solid fa-caret-up"></i> : <i className="fa-solid fa-caret-down"></i>}
+
                                     </div>
-                                    <div id={i}>{question.A}</div>
+                                    {activeIndex === i ? <div id={i}>{question.A}</div> : ""}
+
                                 </li>
-                            </>)
+                            )
                         })
                         }
                     </ul >
