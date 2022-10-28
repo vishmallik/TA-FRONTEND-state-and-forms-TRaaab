@@ -1,0 +1,80 @@
+* {
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+  background-color: rgb(255, 151, 132);
+  padding: 0.7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 600;
+  color: azure;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+ul {
+  width: 50%;
+  margin: 2rem auto;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.container {
+  width: 100%;
+  max-width: 70%;
+  margin: 0 auto;
+}
+img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+body {
+  background-color: rgb(255, 238, 191);
+}
+.basis-50 {
+  flex: 0 1 40%;
+}
+.img-container {
+  flex: 0 1 35%;
+}
+.text-container {
+  flex: 0 1 60%;
+  align-self: flex-start;
+}
+.text-container span {
+  color: rgb(255, 106, 106);
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+.text-container span::before {
+  content: "$ ";
+}
+.food-container {
+  margin: 2rem;
+}
+h3 {
+  margin: 0.5rem 0;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}
+p {
+  text-transform: capitalize;
+  font-size: 1.1rem;
+}
+h2 {
+  padding: 2rem 0;
+  font-size: 1.8rem;
+}
+h2 hr {
+  width: 60px;
+  border: 3px solid rgb(255, 151, 132);
+  border-radius: 10px;
+}
+.active {
+  border: 1px solid rgb(255, 106, 106);
+  background-color: rgb(255, 238, 191);
+  color: rgb(255, 106, 106);
+}
