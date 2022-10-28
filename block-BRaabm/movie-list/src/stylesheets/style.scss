@@ -213,7 +213,7 @@ img {
   flex-wrap: wrap;
 }
 .movies {
-  margin-top: 5rem;
+  margin: 5rem;
   li {
     margin: 0 2rem;
     padding: 4rem 0;
@@ -302,4 +302,19 @@ body {
   text-align: left;
   margin: 2rem 0;
   font-size: 1.5rem;
+}
+.footer {
+  padding: 2rem 0;
+  color: white;
+  background-color: black;
+  a {
+    font-size: 2rem;
+    color: white;
+    i {
+      margin-top: 1rem;
+    }
+    &:hover {
+      color: rgb(255, 213, 25);
+    }
+  }
 }
