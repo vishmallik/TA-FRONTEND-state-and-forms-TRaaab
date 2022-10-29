@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6ff1e80dcd.js" crossorigin="anonymous"></script>
+    <!-- Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Forms</title>
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div id="root"></div>
+    </main>
+    <footer></footer>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    address: "",
+                    zip: "",
+                    city: "",
+                    country: "",
+                    billing_address: "",
+                    billing_zip: "",
+                    billing_city: "",
+                    billing_country: "",
+                    errors: {
+                        address: "",
+                        billing_address: ""
+                    }
+                }
+            }
+            handleChange = (event) => {
+                let { name, value } = event.target;
+                let errors = this.state.errors;
+                if (name === "address") {
+                    errors.address =
+                        value.length < 9 ?
+                            `You need to enter at-least 8 characters` : ""
+
+                }
+                if (name === "billing_address") {
+                    errors.billing_address =
+                        value.length < 9 ?
+                            `You need to enter at-least 8 characters` : ""
+
+                }
+                this.setState({
+                    [name]: value,
+                    errors
+                })
+
+            }
+            handleCheck = (event) => {
+                let { address, zip, city, country, billing_address, billing_city, billing_country, billing_zip } = this.state;
+                if (event.target.checked) {
+                    this.setState({
+                        billing_address: address,
+                        billing_city: city,
+                        billing_country: country,
+                        billing_zip: zip
+                    })
+                } else {
+                    this.setState({
+                        billing_address: "",
+                        billing_city: "",
+                        billing_country: "",
+                        billing_zip: ""
+                    })
+                }
+            }
+            render() {
+                return (
+                    <div className="parent">
+                        <div className="header">
+                            <div className="container">
+                                <div className="">
+                                    <h1>📃 Learning About Forms</h1>
+                                    <p>Controlled vs Uncontrolled Components</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="container">
+                            <h2>Controlled Component</h2>
+                            <div className="flex">
+                                <form action="" className="flex flex-col basis-48">
+                                    <label htmlFor="" className="heading">Shipping Address</label>
+
+                                    <label htmlFor="address">Address</label>
+                                    <input type="address" name="address" id="address" placeholder="e.g. Connaught Palace, New Delhi" onChange={this.handleChange} value={this.state.address} className={this.state.errors.address && "error"} />
+                                    <span>{this.state.errors.address || ""}</span>
+
+                                    <label htmlFor="zip">ZIP/Postal Code</label>
+                                    <input type="number" name="zip" id="zip" placeholder="e.g. 145752" onChange={this.handleChange} value={this.state.zip} />
+
+                                    <label htmlFor="city">City</label>
+                                    <input type="text" name="city" id="city" placeholder="e.g. Delhi" onChange={this.handleChange} value={this.state.city} />
+
+                                    <label htmlFor="country">Country</label>
+                                    <input type="text" name="country" id="country" placeholder="e.g. India" onChange={this.handleChange} value={this.state.country} />
+                                </form>
+                                <form action="" className="flex flex-col basis-48">
+                                    <label htmlFor="" className="heading">Billing Address</label>
+                                    <div className="flex checkbox"><input type="checkbox" onChange={this.handleCheck} /><label>Same as Shipping Address?</label></div>
+
+                                    <label htmlFor="billing_address">Address</label>
+                                    <input type="billing_address" name="billing_address" id="billing_address" placeholder="e.g. Connaught Palace, New Delhi" onChange={this.handleChange} value={this.state.billing_address} className={this.state.errors.billing_address && "error"} />
+                                    <span>{this.state.errors.billing_address || ""}</span>
+
+                                    <label htmlFor="billing_zip">ZIP/Postal Code</label>
+                                    <input type="number" name="billing_zip" id="billing_zip" placeholder="e.g. 145752" onChange={this.handleChange} value={this.state.billing_zip} />
+
+                                    <label htmlFor="billing_city">City</label>
+                                    <input type="text" name="billing_city" id="billing_city" placeholder="e.g. Delhi" onChange={this.handleChange} value={this.state.billing_city} />
+
+                                    <label htmlFor="billing_country">Country</label>
+                                    <input type="text" name="billing_country" id="billing_country" placeholder="e.g. India" onChange={this.handleChange} value={this.state.billing_country} />
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                )
+            }
+
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(<App />)
+    </script>
+</body>
+
+</html>

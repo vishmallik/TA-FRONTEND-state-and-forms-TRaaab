@@ -1,0 +1,224 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+body {
+  line-height: 1.5;
+  font-family: "Noto Sans", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-col {
+  flex-direction: column;
+}
+.container {
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  font-weight: 700;
+}
+.header {
+  background-color: rgb(32, 30, 29);
+  color: rgb(255, 137, 2);
+  padding: 1rem;
+}
+.input {
+  margin: 2rem 0;
+  border-radius: 999px;
+  border: 1px solid rgb(211, 206, 206);
+  overflow: hidden;
+  input:first-child {
+    flex: 0 1 60%;
+    font-size: 1.5rem;
+    border: 0;
+    border-right: 1px solid lightblue;
+    padding: 0.5rem 2rem;
+    &:focus {
+      outline: 0;
+    }
+    &::placeholder {
+      color: lightgrey;
+    }
+  }
+  div:last-child {
+    flex: 0 1 40%;
+    padding: 0 1rem;
+    p {
+      flex: 0 1 15%;
+    }
+    i {
+      cursor: pointer;
+    }
+    input {
+      width: 70%;
+      height: 4px;
+      background: rgb(221, 221, 221);
+      border-radius: 100px;
+      appearance: none;
+    }
+  }
+}
+li {
+  flex: 0 1 30%;
+  max-width: 30%;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  margin: 2rem 0;
+  align-self: flex-start;
+  min-height: 350px;
+  padding: 2rem;
+  p:first-child {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+  p:last-child {
+    margin-top: 2rem;
+    width: 100%;
+    height: auto;
+    word-wrap: break-word;
+  }
+}
