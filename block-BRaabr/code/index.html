@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/6ff1e80dcd.js" crossorigin="anonymous"></script>
+    <!-- Noto Sans Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <title>Forms</title>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div id="root"></div>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Your custom script here -->
+    <script type="text/babel">
+        class MultipleForm extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    text_input: "",
+                    date_input: "",
+                    read_only_input: "This is read only",
+                    disabled_text_input: "This is disabled input",
+                    textarea: "",
+                    disabled_textarea: "This is disabled TextArea"
+                }
+                this.file = React.createRef()
+            }
+            handleChange = (event) => {
+                let { name, value } = event.target;
+                console.log(name, value);
+                this.setState({
+                    [name]: value
+                })
+            }
+            handleFile = (event) => {
+                console.log(event.target.files[0].name)
+            }
+            render() {
+                return (
+                    <form className="flex flex-col">
+                        <label htmlFor="" className="heading">FORMS</label>
+
+                        <label htmlFor="text_input">Text Input</label>
+                        <input type="text" name="text_input" id="text_input" onChange={this.handleChange} value={this.state.text_input} />
+
+                        <label htmlFor="date_input">Date Input</label>
+                        <input type="date" name="date_input" id="date_input" onChange={this.handleChange} value={this.state.date_input} />
+
+                        <label htmlFor="file_input">File Input</label>
+                        <input type="file" name="file_input" id="file_input" ref={this.file} onChange={this.handleFile} />
+
+                        <label htmlFor="read_only_input">Read-Only Input</label>
+                        <input type="text" name="read_only_input" id="read_only_input" readOnly={true} value={this.state.read_only_input} />
+
+                        <label htmlFor="disabled_text_input">Disabled Text Input</label>
+                        <input type="text" name="disabled_text_input" id="disabled_text_input" disabled={true} value={this.state.disabled_text_input} />
+
+                        <label htmlFor="textarea">Textarea Input</label>
+                        <textarea name="textarea" id="textarea" cols="30" rows="10" onChange={this.handleChange} value={this.state.textarea}></textarea>
+
+                        <label htmlFor="disabled_textarea">Textarea Input Disabled</label>
+                        <textarea name="disabled_textarea" id="disabled_textarea" cols="30" rows="10" disabled={true} value={this.state.disabled_textarea}></textarea>
+                    </form>
+                )
+            }
+        }
+        class Validation extends React.Component {
+            constructor(props) {
+                super(props)
+                this.state = {
+                    username: "",
+                    email: "",
+                    password: "",
+                    password2: "",
+                    errors: {
+                        username: "",
+                        email: "",
+                        password: "",
+                        password2: ""
+                    }
+                }
+            }
+            isEmail = (email) => {
+                return /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(email);
+            }
+            handleChange = (event) => {
+                let { name, value } = event.target;
+                let errors = this.state.errors;
+
+                switch (name) {
+                    case "username":
+
+                        errors.username = value.length < 4 ? "Username must be atleast 3 characters" : ""
+                        break;
+                    case "email":
+                        errors.email = this.isEmail(value) ? "" : "Email is invalid"
+                        break;
+                    case "password":
+                        errors.password = value.length < 7 ? "Password must be atleast 7 characters" : ""
+                        break;
+                    case "password2":
+                        errors.password2 = value ? "" : "Confirm Password is Required"
+                        break;
+                }
+                console.log(name, errors)
+
+                this.setState({
+                    [name]: value,
+                    errors
+                })
+            }
+            handleSubmit = (event) => {
+
+            }
+            render() {
+                return (
+                    <form className="flex flex-col" onSubmit={this.handleSubmit}>
+                        <label htmlFor="" className="heading">Register with Us</label>
+
+                        <label htmlFor="username">Username</label>
+                        <input type="text" name="username" id="username" onChange={this.handleChange} value={this.state.username} className={this.state.errors.username && "error"} />
+                        <span>{"" || this.state.errors.username}</span>
+
+                        <label htmlFor="email">Email</label>
+                        <input type="email" name="email" id="email" onChange={this.handleChange} value={this.state.email} className={this.state.errors.email && "error"} />
+                        <span>{"" || this.state.errors.email}</span>
+
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name="password" id="password" onChange={this.handleChange} value={this.state.password} className={this.state.errors.password && "error"} />
+                        <span>{"" || this.state.errors.password}</span>
+
+                        <label htmlFor="password2">Confirm Password</label>
+                        <input type="password" name="password2" id="password2" onChange={this.handleChange} value={this.state.password2} className={this.state.errors.password2 && "error"} />
+                        <span>{"" || this.state.errors.password2}</span>
+
+                        <input type="submit" value="Submit" id="submit" />
+                    </form>
+                )
+            }
+        }
+        function App() {
+            return (<>
+                <MultipleForm />
+                <Validation />
+            </>)
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'))
+        root.render(
+            <React.StrictMode><App /></React.StrictMode>)
+    </script>
+</body>
+
+</html>
