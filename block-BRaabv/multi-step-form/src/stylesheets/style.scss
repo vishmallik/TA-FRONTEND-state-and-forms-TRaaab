@@ -1,0 +1,325 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  font-family: "Open Sans", sans-serif;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+}
+body {
+  line-height: 1.5;
+  background-color: rgb(230, 230, 230);
+}
+a {
+  text-decoration: none;
+}
+img {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+  display: block;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.flex-col {
+  flex-direction: column;
+}
+.container {
+  width: 100%;
+  max-width: 80%;
+  margin: 0 auto;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.step {
+  margin: 5rem 0;
+  height: 700px;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: white;
+  & > div:first-child {
+    flex: 0 1 40%;
+
+    object-fit: cover;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+  }
+  & > div:last-child {
+    padding-right: 8rem;
+    flex: 0 1 50%;
+  }
+}
+
+.nav {
+  justify-content: flex-start;
+  span {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    background-color: rgb(194, 194, 194);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  p {
+    margin: 1rem 2rem 1rem 1rem;
+  }
+}
+fieldset {
+  flex: 0 1 48%;
+  margin: 0.5rem 0;
+  label {
+    display: block;
+  }
+  input {
+    padding: 0.5rem 1rem;
+    font-size: 1.3rem;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid lightgray;
+    &:focus {
+      outline: 0;
+      border: 1px solid blue;
+    }
+    span {
+      color: red;
+      font-size: 0.8rem;
+    }
+  }
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 800;
+}
+input[type="address"] {
+  margin-bottom: 3rem;
+}
+button {
+  background-color: blue;
+  padding: 0.7rem 1.8rem;
+  color: white;
+  border: 1px solid blue;
+  border-radius: 7px;
+  margin: 0.5rem;
+}
+small {
+  color: rgb(182, 182, 182);
+  margin-top: 1rem;
+  display: block;
+}
+.error {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.062);
+  &:focus {
+    border: 1px solid red;
+  }
+}
+.active {
+  background-color: blue !important;
+  color: white;
+}
+
+textarea {
+  width: 100%;
+}
+.justify-start {
+  justify-content: flex-start;
+}
+input[type="radio"] {
+  margin: 0 0.5rem;
+  width: max-content;
+}
+.justify-end {
+  justify-content: flex-end;
+}
+.radio {
+  width: 100%;
+
+  input[type="radio"] {
+    display: none;
+    &:checked + label {
+      background-color: rgba(0, 140, 255, 0.411);
+      border: 2px solid rgba(0, 140, 255, 0.849);
+    }
+  }
+  label {
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    justify-content: center;
+    padding: 1rem 2rem;
+    margin: 1rem;
+    border: 1px solid rgb(160, 160, 160);
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  img {
+    width: 50%;
+  }
+}
+.rounded-checkbox {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid black;
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  display: inline-block;
+}
+.checkbox {
+  label {
+    display: inline-block !important;
+    margin-left: 0.5rem;
+  }
+  div {
+    margin-bottom: 1rem;
+  }
+}
+
+.rounded-checkbox:checked {
+  appearance: auto;
+  clip-path: circle(50% at 50% 50%);
+  background-color: rgb(0, 204, 255);
+}
+input[type="submit"] {
+  background-color: rgb(81, 255, 81);
+  padding: 0.7rem 1.8rem;
+  color: white;
+  border: 1px solid rgb(85, 255, 33);
+  border-radius: 7px;
+  margin: 0.5rem;
+}
