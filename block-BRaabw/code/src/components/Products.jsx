@@ -1,67 +1,76 @@
 import React from "react";
 import Product from "./Product";
-import Aside from "./Aside";
-import data from "../data.json";
-import Cart from "./Cart";
+
 export default class Products extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      cart: [],
+      sort: "",
     };
   }
-  addToCart = (product) => {
+  handleOrder = (event) => {
     this.setState({
-      cart: [...this.state.cart, product],
+      sort: event.target.value,
     });
   };
-  showCart = () => {
-    return <Cart products={this.state.cart} />;
+  filterProduct = (sizes) => {
+    let products = this.props.products;
+    let sortedProducts = products;
+    if (sizes.length !== 0) {
+      // eslint-disable-next-line array-callback-return
+      sortedProducts = products.filter((product) => {
+        for (const size of sizes) {
+          if (product.availableSizes.includes(size)) {
+            return true;
+          }
+        }
+      });
+    }
+    if (this.state.sort === "lowest") {
+      return [...sortedProducts].sort((a, b) => {
+        return a.price - b.price;
+      });
+    }
+    if (this.state.sort === "highest") {
+      return [...sortedProducts].sort((a, b) => {
+        return b.price - a.price;
+      });
+    }
+    return sortedProducts;
   };
+
   render() {
+    console.log();
     return (
-      <div className="container flex">
-        <div className="aside">
-          <Aside
-            sizes={data.products
-              .map((product) => product.availableSizes)
-              .flat(2)}
-          />
-        </div>
+      <div className=" flex">
         <div className="products">
           <div className="header flex">
-            <p>{data.products.length} Products Found</p>
+            <p>{this.filterProduct(this.props.size).length} Products Found</p>
             <div>
               <p>Order By</p>
-              <select name="" id="">
-                <option value="">Lowest to Highest</option>
-                <option value="">Highest to Lowest</option>
+              <select
+                name=""
+                id=""
+                value={this.state.sort}
+                onChange={this.handleOrder}
+              >
+                <option value="">Select</option>
+                <option value="lowest">Lowest to Highest</option>
+                <option value="highest">Highest to Lowest</option>
               </select>
             </div>
           </div>
           <ul className=" ">
-            {data.products.map((product) => {
+            {this.filterProduct(this.props.size).map((product) => {
               return (
                 <Product
                   key={product.sku}
                   product={product}
-                  addToCart={this.addToCart}
+                  addToCart={this.props.addToCart}
                 />
               );
             })}
           </ul>
-        </div>
-        <label className="cart-button" htmlFor="cart">
-          <img src="/static/bag-icon.png" alt="cart" />
-          <span>4</span>
-        </label>
-        <input type="checkbox" name="" id="cart" />
-        <label htmlFor="cart">
-          <img src="/static/sprite_delete_icon.png" alt="" />
-        </label>
-        <div className="cart1">
-          {" "}
-          <Cart products={this.state.cart} />;
         </div>
       </div>
     );
