@@ -1,7 +1,6 @@
 import React from "react";
 function unique(sizes) {
   let arr = [];
-
   sizes.forEach((size) => {
     if (!arr.includes(size)) {
       arr.push(size);
@@ -13,11 +12,18 @@ function unique(sizes) {
 
 export default function Aside(props) {
   return (
-    <ul>
-      {unique(props.sizes).map((size) => (
-        // console.log(size);
-        <li>{size}</li>
-      ))}
+    <ul className="aside  ">
+      {unique(props.sizes).map((size) => {
+        return (
+          <li
+            key={size}
+            onClick={() => props.selectedSize(size)}
+            className={props.size.includes(size) ? "active" : ""}
+          >
+            {size}
+          </li>
+        );
+      })}
     </ul>
   );
 }
