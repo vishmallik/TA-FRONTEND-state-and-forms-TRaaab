@@ -12,6 +12,20 @@ export default class App extends React.Component {
       size: [],
     };
   }
+  componentDidMount() {
+    if (localStorage.carts) {
+      this.setState({
+        cart: JSON.parse(localStorage.carts),
+      });
+    }
+    window.addEventListener("beforeunload", this.handleUpdateLocalStorage);
+  }
+  componentWillUnmount() {
+    window.removeEventListener("beforeunload", this.handleUpdateLocalStorage);
+  }
+  handleUpdateLocalStorage = () => {
+    localStorage.setItem("carts", JSON.stringify(this.state.cart));
+  };
   addToCart = (product) => {
     let present = this.state.cart.find((p) => p.id === product.id);
     if (present) {
